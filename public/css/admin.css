@@ -1,0 +1,44 @@
+        /* Styles pour la liste */
+        ul {
+            list-style-type: none;  /* Supprime les puces par défaut */
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #000; /* Fond noir par défaut */
+            color: white; /* Texte blanc pour contraste */
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Cacher les contenus par défaut */
+        .content {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #d0e8f2;
+            border-radius: 5px;
+        }
+
+        /* Style de l'élément actif */
+        li.active {
+            background-color: #007BFF; /* Fond bleu lorsqu'il est actif */
+            color: white; /* Texte blanc pour contraste */
+        }
+
+        /* Style du formulaire */
+        .form-control {
+            margin-bottom: 10px;
+        }
+
+        .custom-heading {
+            color: #007BFF; /* Par exemple, une couleur bleu foncé */
+            font-weight: bold; /* Si tu veux le rendre plus visible */
+        }
+
+        
+        
+        
+    

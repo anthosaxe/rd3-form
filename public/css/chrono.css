@@ -1,0 +1,11 @@
+.warning-box {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 2px solid #f5c6cb;
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
