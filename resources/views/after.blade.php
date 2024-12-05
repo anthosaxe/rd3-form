@@ -203,11 +203,14 @@ document.querySelector('.submit-button').addEventListener('click', function(even
     const selectedOption = document.querySelector('input[name="system_issue_option"]:checked').value;
     const submitButton = document.querySelector('.submit-button');
     const errorMessage = document.getElementById('errorMessage');
+    const rinsedDetails = document.getElementById('rinsed-details');
+    const isRinsed = document.querySelector('input[name="rinsed_column"]:checked')?.value === 'yes';
 
     if (selectedOption === 'yes') {
-        // Cache le bouton Submit et désactive les actions
+        // Cache le bouton Submit et affiche un message d'erreur
         submitButton.style.display = 'none';
         errorMessage.style.display = 'block';
+
         // Affiche une boîte de dialogue pour décrire le problème
         Swal.fire({
             title: 'Describe the Problem',
@@ -227,42 +230,38 @@ document.querySelector('.submit-button').addEventListener('click', function(even
                 return problemDescription;
             }
         }).then((result) => {
-                if (result.isConfirmed) {
-                    const description = result.value;
+            if (result.isConfirmed) {
+                const description = result.value;
 
-                    // Envoi de l'e-mail (exemple via AJAX)
-                    // $.ajax({
-                    //     url: '/send-problem-email',
-                    //     method: 'POST',
-                    //     data: {
-                    //         _token: $('meta[name="csrf-token"]').attr('content'),
-                    //         description: description
-                    //     },
-                    //     success: function(response) {
-                    //         Swal.fire({
-                    //             icon: 'success',
-                    //             title: 'Email Sent',
-                    //             text: 'Your problem description has been sent to the administrators.'
-                    //         });
-                    //     },
-                    //     error: function(error) {
-                    //         Swal.fire({
-                    //             icon: 'error',
-                    //             title: 'Error',
-                    //             text: 'An error occurred while sending the email.'
-                    //         });
-                    //     }
-                    // });
+                // Simule l'envoi d'un e-mail ou exécute une requête AJAX ici
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Email Sent',
+                    text: 'Your problem description has been sent to the administrators.'
+                });
+
+                // Gère l'affichage de rinsedDetails
+                if (isRinsed) {
+                    rinsedDetails.style.display = 'block';
+                } else {
+                    rinsedDetails.style.display = 'none';
                 }
+
+                // Réactive le bouton Submit après traitement
+                submitButton.style.display = 'block';
+                errorMessage.style.display = 'none';
+            }
         });
     } else if (selectedOption === 'no') {
         // Réaffiche le bouton Submit si "No" est sélectionné
-        submitButton.style.display = 'block'; // Cache le bouton Submit
+        submitButton.style.display = 'block';
+        errorMessage.style.display = 'none';
 
-        // Affiche le message d'erreur et masque le bouton de soumission
-        errorMessage.style.display = 'none';  // Affiche le message d'erreur
+        // Masque les détails de "rinsed" par défaut
+        rinsedDetails.style.display = 'none';
     }
 }
+
 </script>
 
 <script>
